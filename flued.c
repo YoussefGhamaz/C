@@ -10,10 +10,12 @@ int visol(int *fo, int *he, int *ar, int *ve);
 int dsol(int *pr,int *he);
 int asol(int *fo ,int *he ,int *vi ,int *ve);
 int vesol(int *fo, int *he, int *vi, int *ar);
+int hsol1(int *vi, int *ar, int *ve, int *fo);
+int hsol2(int *pr, int *vi);
 
 int main  (){
 
-    int i;
+    int i ,k;
     int p, f, d, h, v, a, u;
 
     printf("select option:\n");
@@ -68,13 +70,34 @@ int main  (){
             printf("note: standard units\n ");
             break;
         }
-}else if ( i = 7 ){
-    printf("1:height with force");
-    printf("2:height with pressure");
-
+} if ( i == 7 ){
+    printf("1:height with force\n");
+    printf("2:height with pressure\n");
+    printf("select:"); scanf("%d", &k);
+        if ( 0 < k < 3 ){
+                switch(k)
+        {
+                    case 1:
+                        printf("enter in order: Viscosity - area - velocity - force\n");
+                printf("enter:"); scanf(" %d %d %d %d", &v ,&a ,&u ,&f);
+            int height = hsol1( &v ,&a ,&u ,&f);
+            printf("height is : %d\n", height);
+            printf("note: standard units\n ");
+            break;
+                    case 2:
+                        printf("enter in order: pressure - Viscosity\n");
+                printf("enter:"); scanf(" %d %d", &p ,&v);
+            height = hsol2(&p ,&v);
+            printf("height is : %d\n", height);
+            printf("note: standard units\n ");
+            break;
+        }
+}else{
+    printf("Wrong entry!");
 }
-
-
+}else{
+    printf("Wrong entry!");
+}
 }
 
 int psol(int *de, int *he){
@@ -105,4 +128,14 @@ int asol(int *fo ,int *he ,int *vi ,int *ve){
 int vesol(int *fo, int *he, int *vi, int *ar){
     int u = ((*fo) * (*he)) / ((*vi) * (*ar));
     return u;
+}
+
+int hsol1(int *vi, int *ar, int *ve, int *fo){
+    int h = ((*vi) * (*ar) * (*ve)) / (*fo);
+    return h;
+}
+
+int hsol2(int *pr, int *vi){
+    int h = (*pr)  / ((*vi) * GF);
+    return h;
 }
