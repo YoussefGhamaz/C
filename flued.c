@@ -1,22 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 
 #define GF 9.81
 
-int psol(int *de,int *he);
-int fsol(int *vi,int *ar ,int *ve ,int *he);
-int visol(int *fo, int *he, int *ar, int *ve);
-int dsol(int *pr,int *he);
-int asol(int *fo ,int *he ,int *vi ,int *ve);
-int vesol(int *fo, int *he, int *vi, int *ar);
-int hsol1(int *vi, int *ar, int *ve, int *fo);
-int hsol2(int *pr, int *vi);
+float psol(float *de,float *he);
+float fsol(float *vi,float *ar ,float *ve ,float *he);
+float visol(float *fo, float *he, float *ar, float *ve);
+float dsol(float *pr,float *he);
+float asol(float *fo ,float *he ,float *vi ,float *ve);
+float vesol(float *fo, float *he, float *vi, float *ar);
+float hsol1(float *vi, float *ar, float *ve, float *fo);
+float hsol2(float *pr, float *vi);
 
 int main  (){
 
     int i ,k;
-    int p, f, d, h, v, a, u;
+    float p, f, d, h, v, a, u;
 
     printf("select option:\n");
     printf("pressure:1 - force:2 - Viscosity:3 - density:4\n");
@@ -29,44 +28,44 @@ int main  (){
         {
             case 1:
                 printf("enter in order: density - height\n");
-                printf("enter:"); scanf(" %d %d", &d ,&h);
-            int pressure = psol(&d,&h);
-            printf("pressure is : %d\n", pressure);
+                printf("enter:"); scanf(" %f %f", &d ,&h);
+            float pressure = psol(&d,&h);
+            printf("pressure is : %3f\n", pressure);
             printf("note: standard units\n ");
             break;
             case 2:
                 printf("enter in order: Viscosity - area - velocity - height\n");
-                printf("enter:"); scanf(" %d %d %d %d", &v ,&a ,&u ,&h);
-            int force = fsol(&v ,&a ,&u ,&h);
-            printf("force is : %d\n", force);
+                printf("enter:"); scanf(" %f %f %f %f", &v ,&a ,&u ,&h);
+            float force = fsol(&v ,&a ,&u ,&h);
+            printf("force is : %f\n", force);
             printf("note: standard units\n ");
             break;
             case 3:
                 printf("enter in order: force - height - area - velocity\n");
-                printf("enter:"); scanf(" %d %d %d %d", &f ,&h ,&a ,&u);
-            int Viscosity = visol(&f ,&h ,&a ,&u);
-            printf("Viscosity is : %d\n", Viscosity);
+                printf("enter:"); scanf(" %f %f %f %f", &f ,&h ,&a ,&u);
+            float Viscosity = visol(&f ,&h ,&a ,&u);
+            printf("Viscosity is : %f\n", Viscosity);
             printf("note: standard units\n ");
             break;
             case 4:
                 printf("enter in order: pressure - height\n");
-                printf("enter:"); scanf(" %d %d", &p ,&h);
-            int density = dsol(&p,&h);
-            printf("density is : %d\n", density);
+                printf("enter:"); scanf(" %f %f", &p ,&h);
+            float density = dsol(&p,&h);
+            printf("density is : %f\n", density);
             printf("note: standard units\n ");
             break;
             case 5:
                 printf("enter in order: force - height - Viscosity -velocity\n");
-                printf("enter:"); scanf(" %d %d %d %d", &f ,&h ,&v ,&u);
-            int area = asol(&f ,&h ,&v ,&u);
-            printf("area is : %d\n", area);
+                printf("enter:"); scanf(" %f %f %f %f", &f ,&h ,&v ,&u);
+            float area = asol(&f ,&h ,&v ,&u);
+            printf("area is : %f\n", area);
             printf("note: standard units\n ");
             break;
             case 6:
                 printf("enter in order: force - height - Viscosity - area\n");
-                printf("enter:"); scanf(" %d %d %d %d", &f ,&h ,&v ,&a);
-            int velocity = vesol(&f ,&h ,&v ,&a);
-            printf("velocity is : %d\n", velocity);
+                printf("enter:"); scanf(" %f %f %f %f", &f ,&h ,&v ,&a);
+            float velocity = vesol(&f ,&h ,&v ,&a);
+            printf("velocity is : %f\n", velocity);
             printf("note: standard units\n ");
             break;
         }
@@ -78,16 +77,16 @@ int main  (){
         {
                     case 1:
                         printf("enter in order: Viscosity - area - velocity - force\n");
-                printf("enter:"); scanf(" %d %d %d %d", &v ,&a ,&u ,&f);
-            int height = hsol1( &v ,&a ,&u ,&f);
-            printf("height is : %d\n", height);
+                printf("enter:"); scanf(" %f %f %f %f", &v ,&a ,&u ,&f);
+            float height = hsol1( &v ,&a ,&u ,&f);
+            printf("height is : %f\n", height);
             printf("note: standard units\n ");
             break;
                     case 2:
                         printf("enter in order: pressure - Viscosity\n");
-                printf("enter:"); scanf(" %d %d", &p ,&v);
+                printf("enter:"); scanf(" %f %f", &p ,&v);
             height = hsol2(&p ,&v);
-            printf("height is : %d\n", height);
+            printf("height is : %f\n", height);
             printf("note: standard units\n ");
             break;
                     default :
@@ -99,42 +98,42 @@ int main  (){
 }
 }
 
-int psol(int *de, int *he){
-    int p = (*de) * (*he) * GF;
+float psol(float *de, float *he){
+    float p = (*de) * (*he) * GF;
     return p;
 }
 
-int fsol(int *vi,int *ar ,int *ve ,int *he){
-    int f = ((*vi) * (*ar) * (*ve)) / (*he);
+float fsol(float *vi,float *ar ,float *ve ,float *he){
+    float f = ((*vi) * (*ar) * (*ve)) / (*he);
     return f;
 }
 
-int visol(int *fo, int *he, int *ar, int *ve){
-    int v = ((*fo) * (*he)) / ((*ar) * (*ve));
+float visol(float *fo, float *he, float *ar, float *ve){
+    float v = ((*fo) * (*he)) / ((*ar) * (*ve));
     return v;
 }
 
-int dsol(int *pr,int *he){
-    int d = (*pr) / ( GF * (*he));
+float dsol(float *pr,float *he){
+    float d = (*pr) / ( GF * (*he));
     return d;
 }
 
-int asol(int *fo ,int *he ,int *vi ,int *ve){
-    int a = ((*fo) * (*he)) / ((*vi) * (*ve));
+float asol(float *fo ,float *he ,float *vi ,float *ve){
+    float a = ((*fo) * (*he)) / ((*vi) * (*ve));
     return a;
 }
 
-int vesol(int *fo, int *he, int *vi, int *ar){
-    int u = ((*fo) * (*he)) / ((*vi) * (*ar));
+float vesol(float *fo, float *he, float *vi, float *ar){
+    float u = ((*fo) * (*he)) / ((*vi) * (*ar));
     return u;
 }
 
-int hsol1(int *vi, int *ar, int *ve, int *fo){
-    int h = ((*vi) * (*ar) * (*ve)) / (*fo);
+float hsol1(float *vi, float *ar, float *ve, float *fo){
+    float h = ((*vi) * (*ar) * (*ve)) / (*fo);
     return h;
 }
 
-int hsol2(int *pr, int *vi){
-    int h = (*pr)  / ((*vi) * GF);
+float hsol2(float *pr, float *vi){
+    float h = (*pr)  / ((*vi) * GF);
     return h;
 }
