@@ -74,7 +74,6 @@ int main  (){
     printf("1:height with force\n");
     printf("2:height with pressure\n");
     printf("select:"); scanf("%d", &k);
-        if ( 0 < k < 3 ){
                 switch(k)
         {
                     case 1:
@@ -91,10 +90,10 @@ int main  (){
             printf("height is : %d\n", height);
             printf("note: standard units\n ");
             break;
+                    default :
+                        printf("Wrong entry!");
+                        break;
         }
-}else{
-    printf("Wrong entry!");
-}
 }else{
     printf("Wrong entry!");
 }
