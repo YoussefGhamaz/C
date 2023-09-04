@@ -1,1 +1,1 @@
-# C projects with frinds.
+# C projects with friends.
