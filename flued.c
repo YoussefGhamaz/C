@@ -94,7 +94,9 @@ int main  (){
                         break;
         }
 }else{
-    printf("Wrong entry!");
+    printf("Wrong entry!\n");
+    printf("enter again:\n");
+    main ();
 }
 }
 
