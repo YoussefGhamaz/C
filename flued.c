@@ -90,8 +90,9 @@ int main  (){
             printf("note: standard units\n ");
             break;
                     default :
-                        printf("Wrong entry!");
-                        break;
+                        printf("Wrong entry!\n");
+                        printf("enter again:\n");
+                        main ();
         }
 }else{
     printf("Wrong entry!\n");
