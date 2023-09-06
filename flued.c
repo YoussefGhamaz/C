@@ -23,7 +23,6 @@ int main  (){
     printf("select:"); scanf("%d", &i);
 
 
-    if ( 0 < i < 8){
         switch(i)
         {
             case 1:
@@ -99,7 +98,6 @@ int main  (){
                         main ();
 
         }
-}
 }
 
 
