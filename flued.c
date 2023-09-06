@@ -23,7 +23,7 @@ int main  (){
     printf("select:"); scanf("%d", &i);
 
 
-    if ( 0 < i < 7){
+    if ( 0 < i < 8){
         switch(i)
         {
             case 1:
@@ -68,13 +68,12 @@ int main  (){
             printf("velocity is : %f\n", velocity);
             printf("note: standard units\n ");
             break;
-        }
-} if ( i == 7 ){
-    printf("1:height with force\n");
-    printf("2:height with pressure\n");
-    printf("select:"); scanf("%d", &k);
+            case 7:
+            printf("1:height with force\n");
+            printf("2:height with pressure\n");
+            printf("select:"); scanf("%d", &k);
                 switch(k)
-        {
+            {
                     case 1:
                         printf("enter in order: Viscosity - area - velocity - force\n");
                 printf("enter:"); scanf(" %f %f %f %f", &v ,&a ,&u ,&f);
@@ -93,13 +92,16 @@ int main  (){
                         printf("Wrong entry!\n");
                         printf("enter again:\n");
                         main ();
+            }
+                    default:
+                        printf("Wrong entry!\n");
+                        printf("enter again:\n");
+                        main ();
+
         }
-}else{
-    printf("Wrong entry!\n");
-    printf("enter again:\n");
-    main ();
 }
 }
+
 
 float psol(float *de, float *he){
     float p = (*de) * (*he) * GF;
